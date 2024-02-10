@@ -1,26 +1,18 @@
 <?php
-namespace App\Entity;
+namespace App\Domain\Entity;
 
-
-use ApiPlatform\Metadata\ApiResource;
 use Doctrine\ORM\Mapping as ORM;
-use Symfony\Component\Validator\Constraints as Assert;
 
 #[ORM\Entity]
-#[ApiResource]
 class Contractor
 {
     #[ORM\Id, ORM\Column, ORM\GeneratedValue]
     private ?int $id = null;
 
     #[ORM\Column]
-    #[Assert\NotBlank]
-    #[Assert\Unique]
     public string $name = '';
 
     #[ORM\Column]
-    #[Assert\NotBlank]
-    #[Assert\Email]
     public string $email = '';
 
     public function __construct()
