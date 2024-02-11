@@ -1,7 +1,7 @@
 <?php
 
 
-namespace App\Application\Query\GetContractors;
+namespace App\Application\Query\Contractor;
 
 
 use App\Domain\Entity\Contractor;

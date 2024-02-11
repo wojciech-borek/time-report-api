@@ -2,14 +2,10 @@
 
 namespace App\Infrastructure\Repository\Contractor;
 
-
-use App\Domain\Entity\Contract;
 use App\Domain\Entity\Contractor;
 use App\Domain\Repository\ContractorRepositoryInterface;
-
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Common\Collections\Criteria;
-use Doctrine\ORM\AbstractQuery;
 use Doctrine\Persistence\ManagerRegistry;
 use Doctrine\ORM\Tools\Pagination\Paginator as DoctrinePaginator;
 
@@ -44,5 +40,10 @@ class ContractorRepository extends ServiceEntityRepository implements Contractor
         return $this->find($id);
     }
 
+    public function remove(Contractor $contractor): void {
+        $entityManager = $this->getEntityManager();
+        $entityManager->remove($contractor);
+        $entityManager->flush();
+    }
 }
 

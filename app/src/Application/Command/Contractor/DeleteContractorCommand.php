@@ -1,11 +1,11 @@
 <?php
 
 
-namespace App\Application\Query\GetContractors;
+namespace App\Application\Command\Contractor;
 
 use App\Application\Command\CommandInterface;
 
-class GetOneContractorQuery implements CommandInterface
+final class DeleteContractorCommand implements CommandInterface
 {
 
     public function __construct(private int $id) {

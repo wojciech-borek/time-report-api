@@ -9,7 +9,7 @@ use ApiPlatform\State\Pagination\Pagination;
 use ApiPlatform\State\Pagination\PaginatorInterface;
 use ApiPlatform\State\ProviderInterface;
 use App\Application\Command\MessengerQueryBus;
-use App\Application\Query\GetContractors\GetContractorsQuery;
+use App\Application\Query\Contractor\GetContractorsQuery;
 use App\Infrastructure\Resource\ContractorResource;
 
 class ContractorCollectionProvider implements ProviderInterface
@@ -21,7 +21,10 @@ class ContractorCollectionProvider implements ProviderInterface
     }
 
     /**
-     * @return PaginatorInterface<ContractorResource>|list<ContractorResource>
+     * @param Operation $operation
+     * @param array $uriVariables
+     * @param array $context
+     * @return ArrayPaginator
      */
     public function provide(Operation $operation, array $uriVariables = [], array $context = []): ArrayPaginator {
         $page = $offset = $limit = null;
