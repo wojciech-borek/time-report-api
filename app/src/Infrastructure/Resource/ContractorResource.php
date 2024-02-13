@@ -16,6 +16,7 @@ use App\Infrastructure\State\Processor\Contractor\DeleteContractorProcessor;
 use App\Infrastructure\State\Provider\Contractor\ContractorCollectionProvider;
 use App\Infrastructure\State\Provider\Contractor\ContractorItemProvider;
 use JetBrains\PhpStorm\Pure;
+use Symfony\Component\Serializer\Attribute\Groups;
 use Symfony\Component\Validator\Constraints as Assert;
 
 #[ApiResource(
@@ -44,16 +45,18 @@ final class ContractorResource
         public ?int $id = null,
 
         #[Assert\NotBlank]
+        #[Groups('time-spent:read')]
         public ?string $name = null,
 
         #[Assert\NotBlank]
         #[Assert\Email]
+        #[Groups('time-spent:read')]
         public ?string $email = null,
     ) {
     }
 
 
-    #[Pure] public static function fromModel(Contractor $contractor): self {
+    #[Pure] public static function fromEntity(Contractor $contractor): self {
         return new self(
             $contractor->getId(),
             $contractor->getName(),

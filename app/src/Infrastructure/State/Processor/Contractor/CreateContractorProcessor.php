@@ -26,9 +26,9 @@ final class CreateContractorProcessor implements ProcessorInterface
             $data->name,
             $data->email
         );
-        $model = $this->messengerQueryBus->handle($command);
+        $entity = $this->messengerQueryBus->handle($command);
 
-        return ContractorResource::fromModel($model);
+        return ContractorResource::fromEntity($entity);
 
     }
 }

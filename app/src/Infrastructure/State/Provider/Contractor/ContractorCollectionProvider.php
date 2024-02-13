@@ -32,14 +32,14 @@ class ContractorCollectionProvider implements ProviderInterface
         if ($this->pagination->isEnabled($operation, $context)) {
             [$page, $offset, $limit] = $this->pagination->getPagination($operation, $context);
         }
-        $modelQuery = $this->messengerQueryBus->handle(new GetContractorsQuery($page, $limit));
+        $entities = $this->messengerQueryBus->handle(new GetContractorsQuery($page, $limit));
         $resources = [];
-        foreach ($modelQuery as $model) {
-            $resources[] = ContractorResource::fromModel($model);
+        foreach ($entities as $entity) {
+            $resources[] = ContractorResource::fromEntity($entity);
         }
 
-        $firstResult = $modelQuery->getQuery()->getFirstResult();
-        $maxResults = $modelQuery->getQuery()->getMaxResults();
+        $firstResult = $entities->getQuery()->getFirstResult();
+        $maxResults = $entities->getQuery()->getMaxResults();
         return new ArrayPaginator($resources, $firstResult, $maxResults);
 
     }

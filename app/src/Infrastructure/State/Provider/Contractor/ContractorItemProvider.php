@@ -23,8 +23,8 @@ class ContractorItemProvider implements ProviderInterface
      */
     public function provide(Operation $operation, array $uriVariables = [], array $context = []): ContractorResource {
         $id = $uriVariables['id'];
-        $model = $this->messengerQueryBus->handle(new GetOneContractorQuery($id));
-        return  ContractorResource::fromModel($model);
+        $entity = $this->messengerQueryBus->handle(new GetOneContractorQuery($id));
+        return  ContractorResource::fromEntity($entity);
 
 
     }
