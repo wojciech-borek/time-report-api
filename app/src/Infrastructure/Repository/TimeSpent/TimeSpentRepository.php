@@ -2,9 +2,12 @@
 
 namespace App\Infrastructure\Repository\TimeSpent;
 
+use App\Domain\Entity\Contractor;
 use App\Domain\Entity\TimeSpent;
 use App\Domain\Repository\TimeSpentRepositoryInterface;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
+use Doctrine\Common\Collections\Criteria;
+use Doctrine\ORM\Tools\Pagination\Paginator as DoctrinePaginator;
 use Doctrine\Persistence\ManagerRegistry;
 
 class TimeSpentRepository extends ServiceEntityRepository implements TimeSpentRepositoryInterface
@@ -32,5 +35,21 @@ class TimeSpentRepository extends ServiceEntityRepository implements TimeSpentRe
         $entityManager->flush();
     }
 
+    public function getTimeSpent(int $page = 1, int $itemsPerPage = 30,?Contractor $contractor= null): DoctrinePaginator {
+        $qb = $this->createQueryBuilder('ts');
+
+        if(!empty($contractor)){
+            $qb->where('ts.contractor = :contractor')->setParameter('contractor', $contractor);
+        }
+
+        $qb->addCriteria(
+            Criteria::create()
+                    ->setFirstResult(($page - 1) * $itemsPerPage)
+                    ->setMaxResults($itemsPerPage)
+            );
+
+
+        return new DoctrinePaginator($qb);
+    }
 }
 
