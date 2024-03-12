@@ -15,12 +15,8 @@ class GetOneContractorHandler
     public function __construct(private ContractorRepositoryInterface $contractorRepository) {
     }
 
-    public function __invoke(GetOneContractorQuery $query): Contractor {
+    public function __invoke(GetOneContractorQuery $query): ?Contractor {
 
-        $contractor = $this->contractorRepository->findOne($query->getId());
-        if (null === $contractor) {
-            throw new MissingContractorException($query->getId());
-        }
-        return $contractor;
+        return $this->contractorRepository->findOne($query->getId());
     }
 }

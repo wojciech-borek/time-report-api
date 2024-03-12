@@ -19,3 +19,6 @@ api_platform:
     keep_legacy_inflector: false
     mapping:
         paths: [ '%kernel.project_dir%/src/Infrastructure/Resource']
+    exception_to_status:
+        App\Domain\Exception\MissingTimeSpentException: 404
+        App\Domain\Exception\MissingContractorException: 404

@@ -14,6 +14,7 @@ use ApiPlatform\Metadata\Get;
 use ApiPlatform\Metadata\GetCollection;
 use ApiPlatform\Metadata\Post;
 use App\Domain\Entity\TimeSpent;
+use App\Domain\Exception\MissingTimeSpentException;
 use App\Infrastructure\Filter\TimeSpentSearchFilter;
 use App\Infrastructure\State\Processor\TimeSpent\CreateTimeSpentProcessor;
 use App\Infrastructure\State\Processor\TimeSpent\DeleteTimeSpentProcessor;
@@ -22,7 +23,6 @@ use App\Infrastructure\State\Provider\TimeSpent\TimeSpentItemProvider;
 use JetBrains\PhpStorm\Pure;
 use Symfony\Component\Serializer\Attribute\Groups;
 use Symfony\Component\Validator\Constraints as Assert;
-
 
 #[ApiResource(
     shortName: 'TimeSpent',

@@ -10,4 +10,9 @@ services:
       - "127.0.0.1:80:80"
     volumes:
       - ./app:/var/www/html
-      - ./:/var/www
+    working_dir: /var/www/html
+    depends_on:
+      - rabbitmq
+  rabbitmq:
+     image: rabbitmq:3-management
+     ports: [ 5672, 15672 ]
