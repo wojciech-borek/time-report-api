@@ -8,7 +8,7 @@ use App\Application\Command\CommandInterface;
 final class CreateTimeSpentCommand implements CommandInterface
 {
 
-    public function __construct(private string $description, private int $time, private int $contractor_id) {
+    public function __construct(private string $description, private int $time, private int $contractor_id,private string $date) {
     }
 
     /**
@@ -32,5 +32,11 @@ final class CreateTimeSpentCommand implements CommandInterface
         return $this->contractor_id;
     }
 
+    /**
+     * @return string
+     */
+    public function getDate(): string {
+        return $this->date;
+    }
 
 }

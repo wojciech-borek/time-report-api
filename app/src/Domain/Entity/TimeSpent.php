@@ -15,6 +15,9 @@ class TimeSpent
     #[ORM\Column(name:'time',type:'integer',nullable: false)]
     public int $time = 0;
 
+    #[ORM\Column(name:'date',type:'string',nullable: false)]
+    public string $date;
+
     #[ORM\Column(name:'created_at',type:'datetime',nullable: false)]
     private \DateTime $createdAt;
 
@@ -93,6 +96,20 @@ class TimeSpent
      */
     public function setCreatedAt(\DateTime $createdAt): void {
         $this->createdAt = $createdAt;
+    }
+
+    /**
+     * @return string
+     */
+    public function getDate(): string {
+        return $this->date;
+    }
+
+    /**
+     * @param string $date
+     */
+    public function setDate(string $date): void {
+        $this->date = $date;
     }
 
 

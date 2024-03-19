@@ -4,8 +4,6 @@
 namespace App\Infrastructure\Resource;
 
 
-use ApiPlatform\Doctrine\Odm\Filter\DateFilter;
-use ApiPlatform\Doctrine\Orm\Filter\SearchFilter;
 use ApiPlatform\Metadata\ApiFilter;
 use ApiPlatform\Metadata\ApiProperty;
 use ApiPlatform\Metadata\ApiResource;
@@ -14,7 +12,6 @@ use ApiPlatform\Metadata\Get;
 use ApiPlatform\Metadata\GetCollection;
 use ApiPlatform\Metadata\Post;
 use App\Domain\Entity\TimeSpent;
-use App\Domain\Exception\MissingTimeSpentException;
 use App\Infrastructure\Filter\TimeSpentSearchFilter;
 use App\Infrastructure\State\Processor\TimeSpent\CreateTimeSpentProcessor;
 use App\Infrastructure\State\Processor\TimeSpent\DeleteTimeSpentProcessor;
@@ -61,9 +58,11 @@ final class TimeSpentResource
         public int $time = 0,
 
         #[Assert\NotNull]
+        public ?string $date = '',
+
+        #[Assert\NotNull]
         #[Groups('time-spent:read')]
         public ?ContractorResource $contractor = null,
-
     ) {
     }
 
@@ -73,6 +72,7 @@ final class TimeSpentResource
             $timeSpent->getId(),
             $timeSpent->getDescription(),
             $timeSpent->getTime(),
+            $timeSpent->getDate(),
             ContractorResource::fromEntity($timeSpent->getContractor()),
     );
     }

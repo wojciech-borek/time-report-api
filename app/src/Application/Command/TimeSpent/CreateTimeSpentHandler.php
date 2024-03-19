@@ -18,6 +18,7 @@ final class CreateTimeSpentHandler
 
     public function __invoke(CreateTimeSpentCommand $command) {
         $timeSpent = new TimeSpent();
+        $timeSpent->setDate($command->getDate());
         $timeSpent->setDescription($command->getDescription());
         $timeSpent->setTime($command->getTime());
         $contractor = $this->contractorRepository->findOne($command->getContractorId());

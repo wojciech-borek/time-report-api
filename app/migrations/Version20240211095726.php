@@ -24,6 +24,7 @@ final class Version20240211095726 extends AbstractMigration
             id integer PRIMARY KEY,
             description CHARACTER VARYING NOT NULL,
             time integer NOT NULL default 0,                   
+            date date NOT NULL,                   
             created_at datetime NOT NULL,                   
             contractor_id integer NOT NULL,
             FOREIGN KEY(contractor_id) REFERENCES contractor(id))
