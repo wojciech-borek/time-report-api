@@ -5,7 +5,6 @@ namespace App\Application\Query\TimeSpent;
 
 
 use App\Domain\Entity\TimeSpent;
-use App\Domain\Exception\MissingTimeSpentException;
 use App\Domain\Repository\TimeSpentRepositoryInterface;
 use Symfony\Component\Messenger\Attribute\AsMessageHandler;
 

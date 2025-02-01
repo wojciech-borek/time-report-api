@@ -5,7 +5,6 @@ namespace App\Application\Query\Contractor;
 
 
 use App\Domain\Entity\Contractor;
-use App\Domain\Exception\MissingContractorException;
 use App\Domain\Repository\ContractorRepositoryInterface;
 use Symfony\Component\Messenger\Attribute\AsMessageHandler;
 

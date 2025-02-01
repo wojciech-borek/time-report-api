@@ -2,10 +2,7 @@
 
 namespace App\Application\Command\TimeSpent;
 
-use App\Domain\Entity\Contractor;
-use App\Domain\Repository\ContractorRepositoryInterface;
 use App\Domain\Repository\TimeSpentRepositoryInterface;
-use App\Infrastructure\Repository\Contractor\ContractorRepository;
 use Symfony\Component\Messenger\Attribute\AsMessageHandler;
 
 #[AsMessageHandler]

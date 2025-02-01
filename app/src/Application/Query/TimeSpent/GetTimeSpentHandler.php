@@ -5,8 +5,8 @@ namespace App\Application\Query\TimeSpent;
 
 
 use ApiPlatform\Api\IriConverterInterface;
+use App\Domain\Repository\ContractorRepositoryInterface;
 use App\Domain\Repository\TimeSpentRepositoryInterface;
-use App\Infrastructure\Repository\Contractor\ContractorRepository;
 use Doctrine\ORM\Tools\Pagination\Paginator;
 use Symfony\Component\Messenger\Attribute\AsMessageHandler;
 
@@ -15,7 +15,7 @@ class GetTimeSpentHandler
 {
     public function __construct(
         private TimeSpentRepositoryInterface $repository,
-        private ContractorRepository $contractorRepository,
+        private ContractorRepositoryInterface $contractorRepository,
         private IriConverterInterface $iriConverter
 
     ) {

@@ -4,7 +4,6 @@ namespace App\Application\Command\Contractor;
 
 use App\Domain\Entity\Contractor;
 use App\Domain\Repository\ContractorRepositoryInterface;
-use App\Infrastructure\Repository\Contractor\ContractorRepository;
 use Symfony\Component\Messenger\Attribute\AsMessageHandler;
 
 #[AsMessageHandler]
